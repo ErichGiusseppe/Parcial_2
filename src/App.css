@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display:flex;
+  min-height: 100vh;
+  align-items: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -26,6 +31,21 @@
 
 .App-link {
   color: #61dafb;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: gray;
+}
+#sign-in-form{
+  max-width:330px;
+}
+.login-box {
+  background-color: white;
+  width: 300px;
+  height: 300px;
 }
 
 @keyframes App-logo-spin {
