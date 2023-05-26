@@ -51,8 +51,7 @@ function Principals() {
                 <Col></Col>
             )
         }
-       
-        
+
     }
 
     return (
