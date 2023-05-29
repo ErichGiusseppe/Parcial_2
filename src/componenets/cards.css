@@ -1,0 +1,8 @@
+.table-container {
+    width: 100%;
+  }
+
+  @font-face {
+    font-family: 'Indie Flower';
+    src: url('../../public/fonts/Indie_Flower/IndieFlower-Regular.ttf') format('truetype');
+  }

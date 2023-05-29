@@ -1,24 +1,26 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+import './Login.css';
+import cafe from './cafe.png';
 const API_URL = 'http://localhost:3001';
 const { useEffect, useState } = require("react");
+
 function LoginWindow() {
-    const [user, setUser] = useState("");
+    const [login, setUser] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
+    
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("user:", user);
+        console.log("user:", login);
         console.log("Password:", password);
         putData();
         
     };
     const handleUserChange = (event) => {
         setUser(event.target.value);
+        console.log(event.target.value)
     };
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
@@ -26,18 +28,17 @@ function LoginWindow() {
     useEffect(() => {
       const token = sessionStorage.getItem("token");
       if (token) {
-        console.log("Ya hay un usuario logueado")
         navigate("/cafes");
       }
-    }, []);
+    }, [navigate]);
       
       const putData = async () => {
         
-        if (user !== "" && password !== "") {
+        if (login !== "" && password !== "") {
       
           try {
       
-            const datosEnviados = { user, password };
+            const datosEnviados = { login, password };
             console.log(JSON.stringify(datosEnviados))
             const response = await fetch(`${API_URL}/login`, {
                 method: 'POST',
@@ -45,9 +46,10 @@ function LoginWindow() {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(datosEnviados)
+                
             })
 
-            console.log(response)
+            console.log(response.status)
       
             if (!response.ok) {
       
@@ -60,52 +62,55 @@ function LoginWindow() {
             navigate('/cafes');
       
           } catch (error) {
-            console.error("Hubo en problema:", error);
+            console.error("Hubo un problema:", error);
+            setErrors({ login: 'Error con el login' });
           }
         }
       }
       
       
     return (
-        <Container id="main-container" className="d-grid h-100">
-        <Form id="sign-in-form" className="text-center p-3 w-100" onSubmit={handleSubmit}>
-          <img
-            className="mb-4 bootstrap-logo"
-            src="https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-coffee-fresh-brown-poster-banner-background-image_133007.jpg"
-            alt="Cafe"
-          />
-          <h1 className="mb-3 fs-3 fw-normal">Please sign in</h1>
-          <Form.Group controlId="sign-in-user-address">
-            <Form.Control
-              onChange={handleUserChange}
-              type="user"
-              size="lg"
-              placeholder="User address"
-              autoComplete="username"
-              className="position-relative"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="sign-in-password">
-            <Form.Control
-              onChange={handlePasswordChange}
-              type="password"
-              size="lg"
-              placeholder="Password"
-              autoComplete="current-password"
-              className="position-relative"
-            />
-          </Form.Group>
-          <Form.Group className="d-flex justify-content-center mb-4" controlId="remember-me">
-            <Form.Check label="Remember me" />
-          </Form.Group>
-          <div className="d-grid">
-            <Button variant="primary" size="lg" type="submit">
-              Sign in
-            </Button>
+      <div className="container">
+       <div className="banner-text" style={{
+                fontFamily: 'Indie Flower',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '36px',
+                lineHeight: '53px',
+                textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25)',
+                flex: 'none',
+                borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
+                }}>
+                El aroma mágico
+            </div>
+            <div className="mt-3"></div>
+      <div className="banner-img">
+        
+        <img
+          src={cafe}
+          alt="Banner de café"
+        />
+        
+      </div>
+      <h2 className="box-heading">Inicio de sesión</h2>
+      <div className="login-box">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username" >Nombre de usuario:</label>
+            <input type="text" style={{background: "#D9D9D9"}} className="form-control" id="username" onChange={handleUserChange}/>
           </div>
-          <p className="mt-5 text-muted">&copy; 2021-2022</p>
-        </Form>
-      </Container>
+          <div className="form-group">
+            <label htmlFor="password">Contraseña:</label>
+            <input type="password" style={{background: "#D9D9D9"}}className="form-control" id="password" onChange={handlePasswordChange} />
+          </div>
+          <div className="button-container">
+            <button type="submit" className="btn btn-success">Ingresar</button>
+            <button type="button" className="btn btn-danger">Cancelar</button>
+          </div>
+          {errors.login && <div style={{ color: '#CD3232' }}>{errors.login}</div>}
+        </form>
+      </div>
+    </div>
     );
   }
   

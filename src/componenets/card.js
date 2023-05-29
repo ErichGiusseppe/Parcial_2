@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { PrincipalContext } from "./cards";
 
 const { useContext } = require("react");
@@ -12,10 +11,10 @@ const Principal = (props) => {
     }
 
     return (
-        <tr>
+        <tr onClick={update}>
             <th scope="row">{props.principal.id}</th>
 
-            <td><Link onClick={update}>{props.principal.nombre}</Link></td>
+            <td>{props.principal.nombre}</td>
 
             <td>{props.principal.tipo}</td>
             <td>{props.principal.region}</td>

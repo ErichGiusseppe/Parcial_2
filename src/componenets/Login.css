@@ -1,0 +1,89 @@
+
+.container {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .banner {
+    position: relative;
+    
+  }
+  .banner-img img {
+    height: auto;
+  }
+  
+  .banner-img {
+    display: flex;
+    width: 100%;
+  }
+  
+  .banner-text {
+    text-align: left;
+    position: top;
+    width: 100%;
+    top: 10px;
+    color: #000000;
+    font-size: 24px;
+    padding: 10px;
+  }
+  
+  .login-box {
+    background-color: #f9f1f1;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border: "1px solid black";
+  }
+  
+  .box-heading {
+    margin-top: 0;
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .form-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    background: #D9D9D9;
+  }
+  
+  .button-container {
+    text-align: center;
+    
+  }
+  
+  .btn {
+    margin-right: 10px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  @font-face {
+    font-family: 'Indie Flower';
+    src: url('../../public/fonts/Indie_Flower/IndieFlower-Regular.ttf') format('truetype');
+  }
+  

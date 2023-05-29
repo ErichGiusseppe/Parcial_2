@@ -1,32 +1,48 @@
 import Card from "react-bootstrap/Card";
 import { PrincipalContext } from "./cards";
 
-const { useContext } = require("react");
 
+const { useEffect, useState ,useContext} = require("react");
 
 export default function Detail() {
     const principalState = useContext(PrincipalContext);
-    /*useEffect(() => {
-
-      const URL =
-         `http://localhost:3001/cafes/${PrincipalContext.principal.id}`;
+    const [detail, setDetail] = useState({id:'',nombre:'',tipo:'',region:'',notas:'',fecha_cultivo:'',altura:'',imagen:''})
+    useEffect(() => {
+      if (principalState && principalState.principal) {
+         
+         const URL =
+         `http://localhost:3001/cafes/${principalState.principal.id}`;
       fetch(URL)
           .then((data) => data.json())
           .then((data) => {
-              setPrincipals(data);
-              console.log(data);
+              setDetail(data);
           });
 
-  }, []);->Esto trae dentro de la id que selecciono el detail pero no alcance a integrarlo en la primera*/
+      }
+      
+
+  }, [principalState]);
 
  return (
-    <Card className="mb-2" style={{padding:"20px", width: "30rem"}} >
-      
-         <Card.Title>{principalState.principal.nombre}
-         </Card.Title>
-         <Card.Body>
-         <Card.Text>{principalState.principal.region}</Card.Text>
-      </Card.Body>
+   <Card className="mb-2" style={{ padding: "20px", width: "30rem", backgroundColor: "#f9f1f1",border: "1px solid black",maxHeight: "500px",display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",}}>
+      <Card.Title ><strong>{detail.nombre}</strong></Card.Title>
+      <Card.Text style={{ marginBottom: "10px" }}>
+         {detail.fecha_cultivo}
+      </Card.Text>
+      <Card.Img variant="top" src={detail.imagen} style={{ width: "40%" }} />
+      <Card.Text>
+        Notas:
+      </Card.Text>
+      <Card.Text>{detail.notas}</Card.Text>
+      <Card.Text>
+      <strong>Cultivado a una altura de {detail.altura} metros</strong>
+      </Card.Text>
+      <Card.Text>
+         {detail.region}
+      </Card.Text>
     </Card>
 
  );
