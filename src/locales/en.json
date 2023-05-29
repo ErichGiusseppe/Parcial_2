@@ -1,5 +1,8 @@
 {
     "Tipo": "Type",
     "Region": "Region",
-    "Nombre": "Name"
+    "Nombre": "Name",
+    "Notas:":"Notes",
+    "detail.altura": "Cultivated at an altitude of {altura} masl"
+
 }

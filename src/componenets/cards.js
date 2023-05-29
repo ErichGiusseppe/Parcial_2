@@ -59,7 +59,7 @@ function Principals() {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">
-                      <FormattedMessage id="Name" />
+                      <FormattedMessage id="Nombre" />
                     </th>
                     <th scope="col">
                       <FormattedMessage id="Tipo" />

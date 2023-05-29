@@ -1,6 +1,7 @@
 {
     "Tipo": "Tipo",
     "Region": "Region",
-    "Country": "País",
-    "Name": "Nombre"
+    "Nombre": "Nombre",
+    "Notas:":"Notas",
+    "detail.altura": "Cultivado a una altura de {altura} msnm"
 }

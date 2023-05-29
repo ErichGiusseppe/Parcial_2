@@ -5,9 +5,10 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { IntlProvider } from 'react-intl';
-const root = ReactDOM.createRoot(document.getElementById('root'));
 import messages_en from "./locales/en.json";
 import messages_es from "./locales/es.json";
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 
 const messages = {
     'en': messages_en,
